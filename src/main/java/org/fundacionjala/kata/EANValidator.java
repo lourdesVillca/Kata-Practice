@@ -7,10 +7,8 @@ public class EANValidator {
 
     public static boolean validate(String number) {
         int checksum = 0;
-        int numberValue;
-
         for (int i = 0; i < number.length() - 1; i++) {
-            numberValue = Character.getNumericValue(number.charAt(i));
+            int numberValue = Character.getNumericValue(number.charAt(i));
             checksum += ((i + 1) % 2 == 0) ? numberValue * 3 : numberValue;
         }
         checksum = checksum % 10 == 0 ? 0 : 10 - (checksum % 10);
